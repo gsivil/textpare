@@ -3,7 +3,7 @@ This is                 a file with several characters   ,
 
 
 
-a couple of lines and a few words.
+        a couple of lines and a few words.
 
 
 extra line

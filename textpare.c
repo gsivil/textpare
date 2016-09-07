@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 #define textA "A.txt"
 #define textB "B.txt"
 
 
 void printall(char text[]);
-void printword(char text[], unsigned int wordpos);
+void printword(char text[], unsigned int wordbeg, unsigned int wordend);
 
 int main(void)
 {
@@ -14,7 +15,7 @@ int main(void)
     printall(textA);
     for (unsigned int i = 0; i<24; i++)
     {
-        printword(textA, i);
+        printword(textA, i, i);
         putchar('\n');
     };
     return 0;
@@ -33,36 +34,40 @@ void printall(char text[])
     fclose(fp);
 }
 
-void printword(char text[], unsigned int wordpos)
+void printword(char text[], unsigned int wordbeg, unsigned int wordend)
 {
     FILE* fp;
     fp = fopen(text, "r");
     char nextchar = getc(fp);
     unsigned int curwordpos = 0;
     int tempspace = 0;
-    while((nextchar != EOF) && (curwordpos<=wordpos))
+    while(nextchar != EOF)
     {
         if(!isalpha(nextchar) && (nextchar != '\n'))
         {
             nextchar = getc(fp);
-            putchar(nextchar);
+            if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
+                putchar(nextchar);
         };
         if (nextchar == '\n')
             nextchar = getc(fp);
         if(nextchar == ',')
         {
-            putchar(nextchar);
+            if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
+                putchar(nextchar);
             nextchar = getc(fp);
         }
         if(isalpha(nextchar) && (nextchar != ' '))
         {
-            putchar(nextchar);    
+            if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
+                putchar(nextchar);    
             nextchar = getc(fp);
         }
         if ((nextchar == ' ') && (tempspace <1))
         {
             curwordpos = curwordpos+1;
-            putchar(nextchar);
+            if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
+                putchar(nextchar);
             nextchar = getc(fp);
             while(nextchar == ' ')
             {
