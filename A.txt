@@ -1,2 +1,9 @@
-This is a file with a several characters,
+This is                 a file with several characters   ,
+
+
+
+
 a couple of lines and a few words.
+
+
+extra line
