@@ -1,0 +1,2 @@
+This is another file that will be used to compare
+with another file.
