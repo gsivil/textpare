@@ -1,0 +1,36 @@
+Compare A.txt to B.txt
+This is                 a file with several characters   ,
+
+
+
+
+        a couple of lines and a few words.
+
+
+extra line
+This
+ is
+ a
+ file
+ with
+ several
+ characters
+ 
+
+ a
+ couple
+ of
+ lines
+ and
+ a
+ few
+ words
+extra
+ line
+
+
+
+
+
+
+
