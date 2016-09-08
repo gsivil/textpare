@@ -15,12 +15,15 @@ void mywait(double seconds);
 int main(void)
 {
     printf("Compare %s to %s\n", textA, textB);
+    for (int n=0;n<40;n++)
+    {
     longline();
-    unsigned int i = 190;
-    unsigned int j = 200;
+    unsigned int i = rand()%3000;
+    unsigned int j = i+1;
     printwords(textA, i, j);
     putchar('\n');
     longline();
+    };
     return 0;
 }
 void mywait(double seconds)
@@ -33,7 +36,6 @@ void longline()
     for (int i =10;i<80;i++)
     {
         printf("_");
-        mywait(0.01);
     };
     printf("\n");
 }
@@ -73,7 +75,7 @@ void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
         {
             if (nextchar == 13)
                 nextchar = getc(fp);
-            mywait(0.01);
+//            mywait(0.0001);
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
                 putchar(nextchar);
