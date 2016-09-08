@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <time.h>
 #define textA "A.txt"
 #define textB "B.txt"
 
@@ -14,16 +14,14 @@ void mywait(double seconds);
 
 int main(void)
 {
+    srand(time(0));
     printf("Compare %s to %s\n", textA, textB);
-    for (int n=0;n<40;n++)
-    {
     longline();
-    unsigned int i = rand()%3000;
+    unsigned int i = rand()%39000;
     unsigned int j = i+1;
     printwords(textA, i, j);
     putchar('\n');
     longline();
-    };
     return 0;
 }
 void mywait(double seconds)
