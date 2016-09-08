@@ -16,8 +16,8 @@ int main(void)
 {
     printf("Compare %s to %s\n", textA, textB);
     longline();
-    unsigned int i = 0;
-    unsigned int j = 100;
+    unsigned int i = 190;
+    unsigned int j = 200;
     printwords(textA, i, j);
     putchar('\n');
     longline();
@@ -59,10 +59,6 @@ void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
     int tempspace = 0;
     while(nextchar != EOF)
     { 
-        if (nextchar == 13)
-            nextchar = '\n';
-        else
-        {
         if(!isalnum(nextchar) && (!isspace(nextchar)) && (!ispunct(nextchar)))
         {
             nextchar = getc(fp);
@@ -75,6 +71,8 @@ void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
         }
         if ((isspace(nextchar)) && (tempspace <1))
         {
+            if (nextchar == 13)
+                nextchar = getc(fp);
             mywait(0.01);
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
@@ -90,6 +88,5 @@ void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
         if (curwordpos >= wordend)
             break;
         };
-    }
 }
 
