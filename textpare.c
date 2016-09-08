@@ -7,20 +7,25 @@
 
 
 void printall(char text[]);
-void printword(char text[], unsigned int wordbeg, unsigned int wordend);
+void printwords(char text[], unsigned int wordbeg, unsigned int wordend);
+void longline();
 
 int main(void)
 {
     printf("Compare %s to %s\n", textA, textB);
     printall(textA);
-    for (unsigned int i = 0; i<24; i++)
-    {
-        printword(textA, i, i);
-        putchar('\n');
-    };
+    longline();
+    unsigned int i = 0;
+    unsigned int j = 100;
+    printwords(textA, i, j);
+    longline();
     return 0;
 }
-
+void longline()
+{
+    for (int i =0;i<80;i++)
+        printf("_");
+}
 void printall(char text[])
 {
     FILE* fp;
@@ -34,7 +39,7 @@ void printall(char text[])
     fclose(fp);
 }
 
-void printword(char text[], unsigned int wordbeg, unsigned int wordend)
+void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
 {
     FILE* fp;
     fp = fopen(text, "r");
@@ -43,7 +48,7 @@ void printword(char text[], unsigned int wordbeg, unsigned int wordend)
     int tempspace = 0;
     while(nextchar != EOF)
     {
-        if(!isalpha(nextchar) && (nextchar != '\n'))
+        if(!isalnum(nextchar) && (nextchar != '\n'))
         {
             nextchar = getc(fp);
             if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
@@ -51,19 +56,19 @@ void printword(char text[], unsigned int wordbeg, unsigned int wordend)
         };
         if (nextchar == '\n')
             nextchar = getc(fp);
-        if(nextchar == ',')
+        if((nextchar == ',') && (nextchar == '.'))
         {
             if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
                 putchar(nextchar);
             nextchar = getc(fp);
         }
-        if(isalpha(nextchar) && (nextchar != ' '))
+        if(isalnum(nextchar) && (nextchar != ' '))
         {
             if ((curwordpos<=wordend) && (curwordpos>=wordbeg))
                 putchar(nextchar);    
             nextchar = getc(fp);
         }
-        if ((nextchar == ' ') && (tempspace <1))
+        if ((isspace(nextchar)) && (tempspace <1))
         {
             curwordpos = curwordpos+1;
             if ((curwordpos<=wordend) && (curwordpos>=wordbeg))

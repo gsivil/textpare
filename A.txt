@@ -1,9 +1,9 @@
 This is                 a file with several characters   ,
 
+A sentence.
 
 
-
-        a couple of lines and a few words.
+4        a couple of lines and a few words.
 
 
 extra line
