@@ -33,11 +33,11 @@ int main(void)
     while (i<100000)
     {
         printoneword(outstring, textA, i);
-        if (diffword(outstring, "death"))
+        if (diffword(outstring, "love"))
         {
             appear = appear+1;
-            printf("\n(%d)\n",appear);
-            mywait(0.5);
+            printf("(%d)",appear);
+
         }
     i = i+1;
     };
@@ -64,7 +64,7 @@ void printoneword(char outstring[], char text[], unsigned int wordpos)
 {
     
     printwords(outstring, text, wordpos, wordpos+1);
-    //mywait(0.000001);
+    mywait(0.00001);
 }
 void mywait(double seconds)
 {
