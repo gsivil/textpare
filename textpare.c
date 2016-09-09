@@ -11,6 +11,7 @@ void printall(char text[]);
 void printwords(char text[], unsigned int wordbeg, unsigned int wordend);
 void longline();
 void mywait(double seconds);
+void printoneword(char text[], unsigned int wordpos);
 
 int main(void)
 {
@@ -19,10 +20,18 @@ int main(void)
     longline();
     unsigned int i = rand()%39000;
     unsigned int j = i+1;
-    printwords(textA, i, j);
+    for (i=0;i<1000;i=i+1)
+    {
+        printoneword(textA, i);
+    };
     putchar('\n');
     longline();
     return 0;
+}
+void printoneword(char text[], unsigned int wordpos)
+{
+    printwords(text, wordpos, wordpos+1);
+    mywait(0.01);
 }
 void mywait(double seconds)
 {
@@ -73,7 +82,6 @@ void printwords(char text[], unsigned int wordbeg, unsigned int wordend)
         {
             if (nextchar == 13)
                 nextchar = getc(fp);
-//            mywait(0.0001);
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
                 putchar(nextchar);
