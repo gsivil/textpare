@@ -30,17 +30,19 @@ int main(void)
     printf("%s", outstring);
     i  = 0;
     unsigned int appear = 0;
-    while (i<100000)
+    char teststring[] = "prey";
+    while (i<10000)
     {
         printoneword(outstring, textA, i);
-        if (diffword(outstring, "death"))
+        if (diffword(outstring,teststring))
         {
             appear = appear+1;
-            printf("\n(%d)\n",appear);
-            mywait(0.5);
+            printf("\n\t\t\t\t\t\t\t\t\t\t(%d)\n",appear);
+            mywait(0.2);
         }
     i = i+1;
     };
+    printf("\nThe word %s appears %d times\n", teststring, appear);
     return 0;
 }
 int diffword(char outstring[], const char teststring[])
