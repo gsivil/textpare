@@ -7,7 +7,7 @@
 
 #define textA "A.txt"
 #define textB "B.txt"
-#define maxsize 1000000
+#define maxsize 40000
 
 void printall(char text[]);
 void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned int wordend);
@@ -22,7 +22,7 @@ int main(void)
     printf("Compare %s to %s\n", textA, textB);
     longline();
     char outstring[maxsize];
-    unsigned int i = 0; 
+    unsigned int i = maxsize; 
     printoneword(outstring, textA, i);
     putchar('\n');
     longline();
@@ -31,19 +31,6 @@ int main(void)
     i  = 0;
     unsigned int appear = 0;
     char teststring[] = "will";
-    while (i<100000)
-    {
-        printoneword(outstring, textA, i);
-/*        if (diffword(outstring,teststring))
-        {
-            appear = appear+1;
-            printf("\n\t\t\t\t\t\t\t\t\t\t(%d)\n",appear);
-//            mywait(0.2);
-        }
-        */
-    i = i+1;
-    };
-    printf("\nThe word %s appears %d times\n", teststring, appear);
     return 0;
 }
 int diffword(char outstring[], const char teststring[])
