@@ -30,16 +30,17 @@ int main(void)
     printf("%s", outstring);
     i  = 0;
     unsigned int appear = 0;
-    char teststring[] = "prey";
-    while (i<10000)
+    char teststring[] = "will";
+    while (i<100000)
     {
         printoneword(outstring, textA, i);
-        if (diffword(outstring,teststring))
+/*        if (diffword(outstring,teststring))
         {
             appear = appear+1;
             printf("\n\t\t\t\t\t\t\t\t\t\t(%d)\n",appear);
-            mywait(0.2);
+//            mywait(0.2);
         }
+        */
     i = i+1;
     };
     printf("\nThe word %s appears %d times\n", teststring, appear);
@@ -122,7 +123,10 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
         if ((isspace(nextchar)) && (tempspace <1))
         {
             if (nextchar == 13)
+            {
                 nextchar = getc(fp);
+//                fflush(stdout);
+            };
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
                 putchar(nextchar);
