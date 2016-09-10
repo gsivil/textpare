@@ -9,7 +9,7 @@
 
 #define textA "A.txt"
 #define textB "B.txt"
-#define maxsize 100000
+#define maxsize 8000000
 
 void printall(char text[]);
 void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned int wordend);
@@ -106,9 +106,8 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
         {
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
             {
-            //    putchar(nextchar);    
-//                putwchar(178);
-                  printf("%lc", 9607);
+//                putchar(nextchar);    
+                    putchar(32);
                 outstring[index++] = nextchar;
             }
 
@@ -122,7 +121,13 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
             };
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
-                putchar(nextchar);
+            {
+               // putchar(nextchar);
+                if (nextchar == ' ')
+                    printf("%lc", 9607);
+                if (nextchar == '\n')
+                    putwchar('\n');
+            };
             nextchar = getc(fp);
             while(isspace(nextchar))
             {
