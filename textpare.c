@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <wchar.h>
+#include <locale.h>
 
 #define textA "A.txt"
 #define textB "B.txt"
@@ -18,6 +20,7 @@ int diffword(char outstring[], const char teststring[]);
 
 int main(void)
 {
+    setlocale(LC_ALL, "");
     srand(time(0));
     printf("Compare %s to %s\n", textA, textB);
     longline();
@@ -31,6 +34,8 @@ int main(void)
     unsigned int appear = 0;
     char teststring[] = "will";
     printwords(outstring, textA, 0, maxsize);
+//    for (int i=0;i<18000;i++)
+ //       printf("%d %lc\n", i, i);
     return 0;
 }
 int diffword(char outstring[], const char teststring[])
@@ -101,9 +106,10 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
         {
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
             {
-                putchar(nextchar);    
+            //    putchar(nextchar);    
+//                putwchar(178);
+                  printf("%lc", 9607);
                 outstring[index++] = nextchar;
-//                strcpy(outstring, &nextchar);
             }
 
             nextchar = getc(fp);
@@ -113,7 +119,6 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
             if (nextchar == 13)
             {
                 nextchar = getc(fp);
-//                fflush(stdout);
             };
             curwordpos = curwordpos+1;
             if ((curwordpos<wordend) && (curwordpos>=wordbeg))
