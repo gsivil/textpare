@@ -36,6 +36,7 @@ int main(void)
     printwords(outstring, textA, 0, maxsize);
 //    for (int i=0;i<18000;i++)
  //       printf("%d %lc\n", i, i);
+     putchar('\n');
     return 0;
 }
 int diffword(char outstring[], const char teststring[])
@@ -95,7 +96,7 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
     unsigned int curwordpos = 0;
     unsigned int index = 0;
     int tempspace = 0;
-
+    long long int i = 0;
     while(nextchar != EOF)
     { 
         if(!isalnum(nextchar) && (!isspace(nextchar)) && (!ispunct(nextchar)))
@@ -124,7 +125,7 @@ void printwords(char outstring[], char text[], unsigned int wordbeg, unsigned in
             {
                // putchar(nextchar);
                 if (nextchar == ' ')
-                    printf("%lc", 9607);
+                    printf("%lc",'.');
                 if (nextchar == '\n')
                     putwchar('\n');
             };

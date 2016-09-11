@@ -10,7 +10,7 @@ CLAGS = -g -Wall
 #LFLAGS = -L/usr/local/lib -lm -lgsl -lgslcblas
 LFLAGS = -lm
 # the name to use for both the target source file, and the output file:
-TARGET = textpare#
+TARGET = findword#
 all: $(TARGET)
        
 $(TARGET): $(TARGET).c
