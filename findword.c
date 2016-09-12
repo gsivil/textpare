@@ -2,10 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
+#include <unistd.h>
 
 #define textin "A.txt"
 
 void printall(char text[], char* theword);
+void mywait(double seconds);
 
 
 int main(int argc, char* argv[])
@@ -16,12 +19,16 @@ int main(int argc, char* argv[])
     else
         theword = argv[1];
 
-    theword = "ing";
-        printall(textin, theword); 
+//    theword = "ing";
+    printall(textin, theword); 
     putchar('\n');
     return 0;
 }
-
+void mywait(double seconds)
+{
+    usleep(seconds*1000000);
+    fflush(stdout);
+}
 
 void printall(char text[], char* theword)
 {
@@ -54,6 +61,7 @@ void printall(char text[], char* theword)
         };
         if (checkword)
         {
+            mywait(0.1);
             words = 0;
             printf("%s", theword);
             for (int i=0;((i<150) && (words<7) && (nextchar != EOF));i++)
@@ -62,6 +70,7 @@ void printall(char text[], char* theword)
                 if (isspace(nextchar))
                     words = words+1;
                 printf("%c", nextchar);
+                mywait(0.05);
             };
             putchar(' '); 
             permitnewline = 1;
